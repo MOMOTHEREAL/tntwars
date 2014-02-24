@@ -1,0 +1,15 @@
+main: me.momo.tntwars.TNTWars
+name: TNTWars
+version: 1.0
+commands:
+  tntstart:
+  
+  tntshop:
+
+  tntrules:
+  
+  tntteam:
+  
+  tntsetlobby:
+  
+  tntjoin:
