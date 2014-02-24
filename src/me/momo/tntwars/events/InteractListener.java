@@ -15,12 +15,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class InteractListener implements Listener{
+	
+	public static TNTWars tnt;
+	
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent e){
 		Player p = e.getPlayer();
 		if (p.getItemInHand() != null){
 			if (p.getItemInHand().getType() == Material.EMERALD){
-				p.openInventory(TNTWars.getBlockShop());
+				p.openInventory(tnt.getBlockShop());
 			}
 		}
 	}

@@ -8,6 +8,7 @@ import me.momo.tntwars.commands.CommandListener;
 import me.momo.tntwars.events.BlockListener;
 import me.momo.tntwars.events.InteractListener;
 import me.momo.tntwars.events.PlayerListener;
+import me.momo.tntwars.inventory.Shop;
 import me.momo.tntwars.phase.Phases;
 import me.momo.tntwars.time.Timings;
 import me.momo.tntwars.util.Rules;
@@ -23,17 +24,19 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TNTWars extends JavaPlugin {
+	Shop s = new Shop(this);
+	private Inventory shopi = s.shopi;
 	private static Phases gamePhase = Phases.PRE; // The variable for the current phase.
 	private static int maxHeight = 93;
 	private static int gameTimer; // The variable for the time left.
 	private static ItemStack rules = new ItemStack(Material.WRITTEN_BOOK); // The variable for the rulesbook item.
 	private static ItemStack shop = new ItemStack(Material.EMERALD); // The variable for the shop opener item.
-	private static Inventory shopi = Bukkit.createInventory(null, 54, "Block Shop"); // The variable for the Block Shop.
 	private static Location blue_spawn = null;
 	private static Location red_spawn = null;
 	private static Location lobby = null;
 	private static List<String> blue_team = new ArrayList<String>();
 	private static List<String> red_team = new ArrayList<String>();
+	
 
 	/**
 	 * @return an Integer that represents the current time left to a phase.
@@ -74,7 +77,7 @@ public class TNTWars extends JavaPlugin {
 	/**
 	 * @return the Inventory representing the Block Shop.
 	 */
-	public static Inventory getBlockShop() {
+	public Inventory getBlockShop() {
 		return shopi;
 	}
 
@@ -155,7 +158,7 @@ public class TNTWars extends JavaPlugin {
 	
 
 	public void onEnable() {
-
+		InteractListener.tnt = this;
 		Timings.tnt = this;
 		CommandListener.tnt = this;
 		this.getCommand("tntstart").setExecutor(new CommandListener());
@@ -192,145 +195,8 @@ public class TNTWars extends JavaPlugin {
 			meta.setPages(Rules.PAGES);
 			rules.setItemMeta(meta);
 		}
-		{
-			ItemStack item = new ItemStack(Material.IRON_HELMET);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Protective Equipment");
-			List<String> lore = Arrays.asList("§6§oProtects you from explosives");
-			meta.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 1, true);
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(0, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.IRON_CHESTPLATE);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Protective Equipment");
-			List<String> lore = Arrays.asList("§6§oProtects you from explosives");
-			meta.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 1, true);
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(9, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.IRON_LEGGINGS);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Protective Equipment");
-			List<String> lore = Arrays.asList("§6§oProtects you from explosives");
-			meta.addEnchant(Enchantment.PROTECTION_EXPLOSIONS, 1, true);
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(18, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.IRON_BOOTS);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Protective Equipment");
-			List<String> lore = Arrays.asList("§6§oProtects you from fall damage");
-			meta.addEnchant(Enchantment.PROTECTION_FALL, 2, true);
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(27, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.IRON_PICKAXE);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Pickaxe");
-			List<String> lore = Arrays.asList("§6§oBreaks stuff");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(36, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.IRON_AXE);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Axe");
-			List<String> lore = Arrays.asList("§6§oChops wood");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(45, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.TNT, 1);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Explosives");
-			List<String> lore = Arrays.asList("§6§oExplodes stuff");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(8, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.COOKED_BEEF, 1);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Food");
-			List<String> lore = Arrays.asList("§6§oReduces hunger");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(25, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.REDSTONE, 1);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Circuitry");
-			List<String> lore = Arrays.asList("§6§oConnects and powers stuff");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(17, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.STONE_BUTTON, 1);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Button");
-			List<String> lore = Arrays.asList("§6§oClick to power circuitry and explosives");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(26, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.STONE, 1);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Building Blocks");
-			List<String> lore = Arrays.asList("§6§oUse to build");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(35, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.DIODE, 1);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Diode");
-			List<String> lore = Arrays.asList("§6§oDoes complicated stuff");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(44, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.LEVER, 1);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Switch");
-			List<String> lore = Arrays.asList("§6§oSwitches the power of circuitry");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(53, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.WATER_BUCKET, 1);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Water");
-			List<String> lore = Arrays.asList("§6§oA bucket of pure water from the Atlantic");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(7, item);
-		}
-		{
-			ItemStack item = new ItemStack(Material.DISPENSER, 1);
-			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("§r§3Thrower");
-			List<String> lore = Arrays.asList("§6§oThrows and ignites explosives");
-			meta.setLore(lore);
-			item.setItemMeta(meta);
-			shopi.setItem(16, item);
-		}
+		s.setupInventory();
+		
 
 		this.getLogger().info("TNTWars has been enabled.");
 	}
