@@ -37,6 +37,7 @@ public class BlockListener implements Listener{
 		if (e.getEntityType() == EntityType.PRIMED_TNT) {
 			if (TNTWars.getPhase() == Phases.PREP) {
 				e.setCancelled(true);
+				
 			}
 		}
 	}

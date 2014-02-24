@@ -16,7 +16,6 @@ import me.momo.tntwars.util.Rules;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
@@ -36,6 +35,7 @@ public class TNTWars extends JavaPlugin {
 	private static Location lobby = null;
 	private static List<String> blue_team = new ArrayList<String>();
 	private static List<String> red_team = new ArrayList<String>();
+	private static List<String> spectators = new ArrayList<String>();
 	
 
 	/**
@@ -156,11 +156,16 @@ public class TNTWars extends JavaPlugin {
 		return red_team;
 	}
 	
+	public static List<String> getSpectators() {
+		return spectators;
+	}
+	
 
 	public void onEnable() {
 		InteractListener.tnt = this;
 		Timings.tnt = this;
 		CommandListener.tnt = this;
+		PlayerListener.tnt = this;
 		this.getCommand("tntstart").setExecutor(new CommandListener());
 		this.getCommand("tntshop").setExecutor(new CommandListener());
 		this.getCommand("tntrules").setExecutor(new CommandListener());
