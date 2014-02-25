@@ -48,7 +48,7 @@ public class PlayerListener implements Listener {
 			}
 			if (TNTWars.getPhase() == Phases.FIGHT){
 				p.setGameMode(GameMode.CREATIVE);
-				p.sendMessage("You are now a spectator; please consider drinking invisibility potions and staying on your side."); //Now a spectator
+				p.sendMessage(Messages.SPEC_MSG); //Now a spectator
 			}
 		}
 	}

@@ -7,4 +7,5 @@ public class Messages {
 		r = PREFIX + "§4§lDEATH!§r §aPlayer §l" + par0 + "§r§a is eleminated!";
 		return r;
 	}
+	public static String SPEC_MSG = PREFIX + "You are now a spectator; please consider drinking invisibility potions and staying on your side.";
 }
