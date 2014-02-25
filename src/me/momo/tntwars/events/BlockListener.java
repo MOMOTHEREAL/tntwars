@@ -10,9 +10,11 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
 public class BlockListener implements Listener{
@@ -37,7 +39,15 @@ public class BlockListener implements Listener{
 		if (e.getEntityType() == EntityType.PRIMED_TNT) {
 			if (TNTWars.getPhase() == Phases.PREP) {
 				e.setCancelled(true);
-				
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onTNTDamagePreparation(EntityDamageByEntityEvent e) {
+		if (e.getDamager() instanceof TNTPrimed) {
+			if (TNTWars.getPhase() == Phases.PREP) {
+				e.setCancelled(true);
 			}
 		}
 	}
