@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import me.momo.tntwars.TNTWars;
 import me.momo.tntwars.phase.Phases;
+import me.momo.tntwars.scoreboard.InfoScoreboard;
 import me.momo.tntwars.util.Messages;
 
 import org.bukkit.Bukkit;
@@ -46,6 +47,9 @@ public class Timings {
 					
 					for (Player p : tnt.getServer().getOnlinePlayers()){
 						p.setLevel(TNTWars.getTimeLeft());
+						if (TNTWars.getBlueTeam().contains(p.getName()) || TNTWars.getRedTeam().contains(p.getName())){
+							InfoScoreboard.updateScoreboard(p);
+						}
 					}
 					
 					if (TNTWars.getTimeLeft() == 300 || TNTWars.getTimeLeft() == 240 || TNTWars.getTimeLeft() == 180 || TNTWars.getTimeLeft() == 120 || TNTWars.getTimeLeft() == 60) { // Checks
@@ -68,7 +72,9 @@ public class Timings {
 						for (Player p : tnt.getServer().getOnlinePlayers()) {
 							p.playSound(p.getLocation(), Sound.LEVEL_UP, 1F, 0.7F);
 							p.setLevel(0);
-							
+							if (TNTWars.getBlueTeam().contains(p.getName()) || TNTWars.getRedTeam().contains(p.getName())){
+								InfoScoreboard.updateScoreboard(p);
+							}
 						}
 						tnt.getServer().broadcastMessage(Messages.PREFIX + "§6§lFire in the hole§r§a!");
 					}

@@ -10,6 +10,7 @@ import me.momo.tntwars.events.InteractListener;
 import me.momo.tntwars.events.PlayerListener;
 import me.momo.tntwars.inventory.Shop;
 import me.momo.tntwars.phase.Phases;
+import me.momo.tntwars.scoreboard.InfoScoreboard;
 import me.momo.tntwars.time.Timings;
 import me.momo.tntwars.util.Rules;
 
@@ -55,7 +56,6 @@ public class TNTWars extends JavaPlugin {
 	/**
 	 * Sets the time left to the current phase.
 	 */
-	@Deprecated
 	public static void setTimeLeft(int par0) {
 		gameTimer = par0;
 	}
@@ -166,6 +166,7 @@ public class TNTWars extends JavaPlugin {
 		Timings.tnt = this;
 		CommandListener.tnt = this;
 		PlayerListener.tnt = this;
+		InfoScoreboard.plugin = this;
 		this.getCommand("tntstart").setExecutor(new CommandListener());
 		this.getCommand("tntshop").setExecutor(new CommandListener());
 		this.getCommand("tntrules").setExecutor(new CommandListener());

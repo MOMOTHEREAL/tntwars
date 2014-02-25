@@ -8,4 +8,10 @@ public class Messages {
 		return r;
 	}
 	public static String SPEC_MSG = PREFIX + "You are now a spectator; please consider drinking invisibility potions and staying on your side.";
+	public static String SCOREBOARD_TITLE = "§8--[§4§lTNTWars§r§8]--";
+	public static String SCOREBOARD_TIME = "§5§lTime left";
+	public static String SCOREBOARD_TEAM = "§5§lYour team";
+	public static String SCOREBOARD_TEAM_BLUE = "§3Blue";
+	public static String SCOREBOARD_TEAM_RED = "§cRed";
+	
 }
