@@ -9,6 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.DisplaySlot;
 
 public class CommandListener implements CommandExecutor{
 	
@@ -52,6 +53,8 @@ public class CommandListener implements CommandExecutor{
 							for (Player players : Bukkit.getOnlinePlayers()){
 								players.setPlayerListName(players.getName());
 								p.sendMessage(Messages.PREFIX + "§aReseted " + players.getName() + "'s team.");
+								players.getScoreboard().clearSlot(DisplaySlot.SIDEBAR);
+								p.sendMessage(Messages.SCOREBOARD_RESET);
 							}
 						}
 					}else{

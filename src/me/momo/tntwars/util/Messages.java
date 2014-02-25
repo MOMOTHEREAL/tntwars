@@ -13,5 +13,7 @@ public class Messages {
 	public static String SCOREBOARD_TEAM = "§5§lYour team";
 	public static String SCOREBOARD_TEAM_BLUE = "§3Blue";
 	public static String SCOREBOARD_TEAM_RED = "§cRed";
-	
+	public static String SCOREBOARD_RESET = PREFIX + "§aReseted all socreboards.";
+	public static String SCOREBOARD_HEALTH = "§5§lHealth";
+	public static String SCOREBOARD_HUNGER = "§5§lHunger";
 }
