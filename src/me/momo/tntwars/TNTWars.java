@@ -2,14 +2,19 @@ package me.momo.tntwars;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import me.momo.tntwars.commands.CommandListener;
+import me.momo.tntwars.commands.RegionCommand;
 import me.momo.tntwars.events.BlockListener;
 import me.momo.tntwars.events.InteractListener;
 import me.momo.tntwars.events.PlayerListener;
 import me.momo.tntwars.inventory.Shop;
 import me.momo.tntwars.phase.Phases;
+import me.momo.tntwars.region.Region;
+import me.momo.tntwars.region.WandLocation;
 import me.momo.tntwars.scoreboard.InfoScoreboard;
 import me.momo.tntwars.time.Timings;
 import me.momo.tntwars.util.Rules;
@@ -37,7 +42,27 @@ public class TNTWars extends JavaPlugin {
 	private static List<String> blue_team = new ArrayList<String>();
 	private static List<String> red_team = new ArrayList<String>();
 	private static List<String> spectators = new ArrayList<String>();
+	private static Region redRegion = new Region(null, null, null, null);
+	private static Region blueRegion = new Region(null, null, null, null);
 	
+	
+	
+	
+	public static Region getRedRegion() {
+		return redRegion;
+	}
+
+	public static void setRedRegion(Region redRegion) {
+		TNTWars.redRegion = redRegion;
+	}
+
+	public static Region getBlueRegion() {
+		return blueRegion;
+	}
+
+	public static void setBlueRegion(Region blueRegion) {
+		TNTWars.blueRegion = blueRegion;
+	}
 
 	/**
 	 * @return an Integer that represents the current time left to a phase.
@@ -173,6 +198,7 @@ public class TNTWars extends JavaPlugin {
 		this.getCommand("tntteam").setExecutor(new CommandListener());
 		this.getCommand("tntjoin").setExecutor(new CommandListener());
 		this.getCommand("tntsetlobby").setExecutor(new CommandListener());
+		this.getCommand("region").setExecutor(new RegionCommand());
 		this.getServer().getPluginManager().registerEvents(new InteractListener(), this);
 		this.getServer().getPluginManager().registerEvents(new BlockListener(), this);
 		this.getServer().getPluginManager().registerEvents(new PlayerListener(), this);

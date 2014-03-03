@@ -45,7 +45,7 @@ public class InfoScoreboard {
 			info.getScore(Bukkit.getOfflinePlayer("§4" + (((int)p.getHealth())*5) + "%")).setScore(-4);
 			info.getScore(Bukkit.getOfflinePlayer("§2")).setScore(-5);
 			info.getScore(Bukkit.getOfflinePlayer(Messages.SCOREBOARD_HUNGER)).setScore(-6);
-			info.getScore(Bukkit.getOfflinePlayer("§c" + (((int)p.getFoodLevel())*5) + "%")).setScore(-7);
+			info.getScore(Bukkit.getOfflinePlayer("§c§4" + (((int)p.getFoodLevel())*5) + "%")).setScore(-7);
 			
 			
 		}
