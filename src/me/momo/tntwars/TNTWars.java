@@ -33,7 +33,7 @@ public class TNTWars extends JavaPlugin {
 	private Inventory shopi = s.shopi;
 	private static Phases gamePhase = Phases.PRE; // The variable for the current phase.
 	private static int maxHeight = 93;
-	private static int gameTimer; // The variable for the time left.
+	private static int gameTimer;
 	private static ItemStack rules = new ItemStack(Material.WRITTEN_BOOK); // The variable for the rulesbook item.
 	private static ItemStack shop = new ItemStack(Material.EMERALD); // The variable for the shop opener item.
 	private static Location blue_spawn = null;
